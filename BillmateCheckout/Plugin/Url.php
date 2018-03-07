@@ -14,7 +14,10 @@ class Url {
 
     public function afterGetCheckoutUrl($subject,$result){
         if ($this->helper->getEnable()) {
-            return '/billmatecheckout';
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+            $url = $storeManager->getStore()->getBaseUrl() . "billmatecheckout";
+            return $url;
         }
         return $result;
     }
