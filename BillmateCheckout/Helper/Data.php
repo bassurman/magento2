@@ -79,6 +79,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         $this->quote = $quote;
         $this->shippingMethodManagementInterface = $_shippingMethodManagementInterface;
         $this->quoteCollectionFactory = $quoteCollectionFactory;
+        $this->logger = $context->getLogger();
         parent::__construct($context);
     }
 
@@ -1205,8 +1206,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
 			return $order_id;
 		}
 		catch (\Exception $e){
-			file_put_contents("var/log/billmate.log", date("Y-m-d H:i:s") . " Could not create order. Error: " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n", FILE_APPEND);
-			return 0;
+            $this->logger->error(print_r(array(
+                'Could not create order',
+                '__FILE__' => __FILE__,
+                '__CLASS__' => __CLASS__,
+                '__FUNCTION__' => __FUNCTION__,
+                '__LINE__' => __LINE__,
+                'exception.message' => $e->getMessage(),
+                'exception.file' => $e->getFile(),
+                'exception.line' => $e->getLine(),
+                '' => ''
+            ), true));
+            return 0;
 		}
     }
 	
