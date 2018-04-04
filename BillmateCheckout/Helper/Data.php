@@ -628,21 +628,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         }
 
         $data = array(
-            'CheckoutData' => array(
-                'windowmode' => 'iframe',
-                'sendreciept' => 'yes',
-                'terms' => $this->getTermsURL()
-            ),
             'PaymentData' => array(
-                'method' => '93',
-                'currency' => 'SEK',
-                'language' => 'sv',
-                'country' => 'SE',
                 'orderid' => $cart->getQuote()->getReservedOrderId(),
-                'callbackurl' => $url . "billmatecheckout/callback/callback",
-                "accepturl" => $url . "billmatecheckout/success/success/",
-                'number' => $billmate_checkout_id,
-				"cancelurl" => $url . "billmatecheckout"
+                'number' => $billmate_checkout_id
             ),
             'Articles' => array(),
             'Cart' => array()
