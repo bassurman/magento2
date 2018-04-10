@@ -11,15 +11,17 @@
     margin-top: -20px;
     margin-left: 54%;
     color:#7c7c7c;
-	font-weight: bold;
+    font-weight: bold;
 }
 .billmate-checkout-price-head{
     margin-top: -20px;
     margin-left: 54%;
 }
 .billmate-checkout-qty{
-    margin-top: -20px;
-    margin-left: 72%;
+    display: block;
+    float: right;
+    overflow: auto;
+    position: relative;
 }
 .billmate-checkout-qty-head{
     margin-top: -20px;
@@ -29,7 +31,7 @@
     margin-top: -50px;
     margin-left: 85%;
     color:#7c7c7c;
-	font-weight: bold;
+    font-weight: bold;
 }
 .billmate-checkout-sum-head{
     margin-top: -20px;
@@ -47,9 +49,22 @@
     border-top:2px solid #d0d3d4;
     width:700px;
 }
-.billmate-checkout-img{
-    float:left;
+
+img.billmate-checkout-img {
 }
+
+img.product-image-photo {
+    width: 135px;
+}
+
+.product-image-container {
+    width:165px;
+}
+
+.product-image-wrapper {
+    padding-bottom: 100%;
+}
+
 .billmate-checkout-discount{
     margin-top: -123px;
 }
@@ -59,11 +74,38 @@
     width:52.5%;
     color:#7c7c7c;
     float: right;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 td .name{
     margin-left:365px;
+}
+
+
+td.col.qty {
+    text-align: right !important;
+}
+
+.product-image-container {
+    display: inline-block;
+    max-width: 100%;
+}
+
+
+.product-item-photo {
+    display: table-cell;
+    max-width: 100%;
+    padding-right: 20px;
+    position: static;
+    vertical-align: top;
+    width: 1%;
+}
+
+.product-item-details {
+    display: table-cell;
+    vertical-align: top;
+    white-space: normal;
+    width: 99%;
 }
 
 h1{
@@ -95,42 +137,65 @@ button.inc {
     height: 37px;
     color:#000;
     background-color:#fff;
-    margin-top: -59px;
-    margin-left: 44px;
-	border: 1px solid #f3f3f3;
-	  border-top-right-radius: 3px !important;
+    
+    display: block;
+    float: right;
+
+    border: 1px solid #f3f3f3;
+    border-radius: 0;
+    border-top-right-radius: 3px !important;
     border-bottom-right-radius: 3px !important;
     font-weight:bold;
     font-size: 24px;
+
+    margin-left: -4px;
 }
 
 button.sub {
     width: 35px;
     height: 37px;
     color:#000;
-    background-color:#fff;	
-    margin-top:-9px;
-    margin-left: -25px;
-	border: 1px solid #f3f3f3;
+    background-color:#fff;
+    display: block;
+    border: 1px solid #f3f3f3;
+    border-radius: 0;
     border-top-left-radius: 3px !important;
     border-bottom-left-radius: 3px !important;
     font-weight:bold;
     font-size: 25px;
+
+    float: right;
+    margin-right: -4px;
 } 
-.billmate-checkout-product-qty{
-    height:17px;
-    width:19px;
+
+input.billmate-checkout-product-qty {
+
+    background:#f3f3f3;
     background-color:#f3f3f3;
-    padding:10px 12px 10px;
-    margin-top: -37px;
-    margin-left:10px;
-	font-weight: bold;
+    padding:10px 0px 10px;
+    display: block;
+    float: right;
+
+    border: 1px solid #f3f3f3;
+    font-weight: bold;
+    width: 37px;
+    height: 37px;
+    text-align: center;
 }
+
 .bm-cart-wrapper{
     padding-left: 0px;
     padding-right: 0px;
     
     
+}
+
+.bm-cart-wrapper * {
+    
+}
+
+.cart.table-wrapper .col.qty {
+    padding-top: 12px;
 }
 
 .billmate-cart-table th{
@@ -156,14 +221,15 @@ div.checkout{
 .billmate-cart-table tr{
     padding:10px;
 }
+
 .billmate-checkout-button-del {
-    height:20px;
-    width:15px;
     background-color:#fff;
     background-image:url(../img/span.png);
-    float:right;
-    margin-top:-22px;
     cursor:pointer;
+    display: block;
+    height:20px;
+    margin-top:4px;
+    width:15px;
 }
 
 #code{
@@ -204,14 +270,15 @@ iframe#checkout {
     border-bottom: 2px solid #7c7c7c;
     padding-bottom: 10px;
 }
+
 .billmate-checkout-product-row {
-    width: 100%;
-    padding: 10px 0px;
-    float: left;
     border-bottom: 1px solid #7c7c7c;
     margin-bottom: 15px;
-	min-height: 50px;
+    min-height: 50px;
+    overflow: auto;
+    padding: 10px 0px;
 }
+
 .billmate-checkout-product-row .billmate-checkout-name{
     margin-top: 0;
     float: left;
@@ -223,12 +290,12 @@ iframe#checkout {
     font-size: 14px;
     color: #7c7c7c;
     font-weight: 400;
-	width: 300px; 
+    width: 300px; 
     word-wrap: break-word;
 }
 .billmate-checkout-product-row .billmate-checkout-name p{
     margin-bottom: 2px;
-	width: 270px;
+    width: 270px;
 } 
 table.totals td {
     padding: 3px 10px;
@@ -253,20 +320,18 @@ table.totals td {
     margin-top: 0px;
     float: left;
     margin-bottom: 0px;
-	width: 45%;
+    width: 45%;
     padding-bottom: 10px;
 }
 .billmate_shipping_methos {
     width: 100%;
     float: left;
-	font-weight: bold;
+    font-weight: bold;
 }
-.billmate-checkout-img img {
-    min-width: 80px;
+
+img.billmate-checkout-img {
 }
-.billmate-checkout-img {
-    padding-right: 10px;
-}
+
 .billmate_shipping_methos .ship_methods .radio{
     display: none;
 }
@@ -291,7 +356,7 @@ table.totals td {
 }
 .billmate-checkout-product-row .billmate-checkout-name ,.billmate-checkout-sum ,.billmate-checkout-price{
     font-size: 16px;
-	
+    
 }
 table.totals td.price {
     text-align: justify;
@@ -315,11 +380,43 @@ table.totals td.name {
     }
 }
 .area{
-	left:-37%;
-	position:relative;
-	padding:0;
-	} 
+    left:-37%;
+    position:relative;
+    padding:0;
+    } 
 @media screen and (max-width: 767px){
+
+    .billmate-checkout-button-inc.inc,
+    .billmate-checkout-button-sub.sub {
+        display: none;
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    input.billmate-checkout-product-qty {
+
+
+        text-align: center;
+
+        background: #fff;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #c2c2c2;
+        border-radius: 1px;
+        font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        padding: 0 9px;
+        vertical-align: baseline;
+        box-sizing: border-box;
+        width: 35px;
+        height: 37px;
+    }
+
     div.bm-cart-wrapper{
         width: 100%;
     }
@@ -329,25 +426,18 @@ table.totals td.name {
     .billmate-checkout-product-row .billmate-checkout-name, .billmate-checkout-sum ,.billmate-checkout-price{
         font-size: 14px;
     }
-	.table-responsive{
-		border:0;
-	}
-	.billmate-checkout-qty-head {
-    margin-top: -20px;
-    margin-left: 68%;
-}
-.billmate-checkout-qty {
-    margin-top: 20px; 
-    margin-left: 66%;
-}
+    .table-responsive{
+        border:0;
+    }
+    
+
 .billmate-checkout-sum-head {
     /* margin-top: 20px; */
-    margin-left: 80%;
+    
     color: #7c7c7c;
 }
 .billmate-checkout-sum {
-    margin-top: -51px;
-    margin-left: 80%;
+    
     color: #7c7c7c;
 }
 .billmate-checkout-product-row .billmate-checkout-name p {
@@ -374,11 +464,11 @@ margin-top: 0;
 }
 .area{
 position:relative;
-	left: -31%;
-	}
-	.totals{
-	width:43.5%;
-	}
+    left: -31%;
+    }
+    .totals{
+    width:43.5%;
+    }
 }
 
 @media screen and (max-width: 680px){
@@ -386,73 +476,59 @@ position:relative;
         width: 100%;
         margin-bottom: 15px;
         }
-	.billmate-checkout-qty {
-		position: absolute;
-		bottom: 0;
-		left: 40px;
-		margin: 5px;
-	}
-	.billmate-checkout-product-row{
-		padding-bottom: 70px;
-		position: relative;
-	}
-	.billmate-checkout-price {
-		position: absolute;
-		margin: 0;
-		bottom: 0;
-		right: 0;
-	}
+    .billmate-checkout-qty {
+    }
+    .billmate-checkout-product-row{
+        padding-bottom: 70px;
+        position: relative;
+    }
+    .billmate-checkout-price {
+    }
 
-	.billmate-checkout-del-but {
-		float: right;
-		display: block;
-		height: auto;
-		margin-top: 0;
-		margin-right: 10px;
-	} 
-	.billmate-checkout-button-del {            
-		margin-top: 0;
-	}
-	.billmate-checkout-sum {
-		position: absolute;
-		margin: 0 !important;
-		bottom: 20px;
-		right: 10px;
-	}
+    .billmate-checkout-del-but {
+        float: right;
+        display: block;
+        height: auto;
+        margin-top: 0;
+        margin-right: 10px;
+    } 
+    .billmate-checkout-button-del {            
+        margin-top: 0;
+    }
+    .billmate-checkout-sum {
+    }
 
-	.billmate-checkout-table-head > div{
-		display: none;
-	}
-	.billmate-checkout-img img{
-		min-width: 110px;
-	}
-	.billmate-checkout-price-head{
-		display:none;
-	}
-	.billmate-checkout-price{
-		display:none;
-	}
-	table.totals td.name {
-		padding-left: 0px;
-	}
-	.table-responsive{
-		border:0;
-	}
-	.billmate-checkout-product-row .billmate-checkout-name span{
-		font-size: 14px;
-		color: #7c7c7c;
-		font-weight: 400;
-		width: 270px;
-		word-wrap: break-word;
-	}
-	.billmate-checkout-product-row .billmate-checkout-name p {
-		margin-bottom: 2px;
-		width: 286px;
-	}
+    .billmate-checkout-table-head > div{
+        display: none;
+    }
+    img.billmate-checkout-img {
+    }
+    .billmate-checkout-price-head{
+        display:none;
+    }
+    .billmate-checkout-price{
+        display:none;
+    }
+    table.totals td.name {
+        padding-left: 0px;
+    }
+    .table-responsive{
+        border:0;
+    }
+    .billmate-checkout-product-row .billmate-checkout-name span{
+        font-size: 14px;
+        color: #7c7c7c;
+        font-weight: 400;
+        width: 270px;
+        word-wrap: break-word;
+    }
+    .billmate-checkout-product-row .billmate-checkout-name p {
+        margin-bottom: 2px;
+        width: 286px;
+    }
     
-	.area{
-		position:relative;
-		left: -62%;
-	} 
+    .area{
+        position:relative;
+        left: -62%;
+    } 
 }
-	

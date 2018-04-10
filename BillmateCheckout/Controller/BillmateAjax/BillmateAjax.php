@@ -28,6 +28,37 @@ class BillmateAjax extends \Magento\Framework\App\Action\Action {
 		$result = $this->resultJsonFactory->create();
 		if ($this->getRequest()->isAjax()) {
 			$changed = false;
+
+            if ($_POST['field2'] == 'set_item_quantity'){
+                if (isset($_POST['field4']) AND is_numeric($_POST['field4'])) {
+
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
+                    $product = $objectManager->get('\Magento\Catalog\Model\Product');
+                    $allItems = $cart->getQuote()->getAllVisibleItems();
+
+                    $id         = explode('_', $_POST['field3'])[1];
+                    $quantity   = $_POST['field4'];
+
+                    foreach ($allItems as $item) {
+                        if ($item->getId() == $id){
+                            if ($quantity >= 1){
+                                $item->setQty($quantity);
+                            } else {
+                                if (count($allItems) > 1) {
+                                    $cart->getQuote()->removeItem($item->getId());
+                                } else {
+                                    $this->helper->clearSession();
+                                    return $result->setData("redirect");
+                                }
+                            }
+                            $cart->save();
+                            $changed = true;
+                        }
+                    }
+                }
+            }
+
 			if ($_POST['field2'] == 'sub'){
 				$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 				$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
